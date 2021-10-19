@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: kckateera/lemi011b-client
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
 
@@ -28,13 +28,21 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  privileged: true
+volumeMounts:
+  - mountPath: /dev/ttyUSB0
+    name: ttyUSB0
   # capabilities:
   #   drop:
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+volumes:
+  - name: ttyUSB0
+    hostPath:
+      path: /dev/ttyUSB0
 
 service:
   type: ClusterIP
