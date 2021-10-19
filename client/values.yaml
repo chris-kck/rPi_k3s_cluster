@@ -10,6 +10,9 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
 
+livenessProbe: null
+readinessProbe: null
+
 env:
   - name: LEMI011B_CLIENT_REST_URL
     value: "http://client.local:8080"
