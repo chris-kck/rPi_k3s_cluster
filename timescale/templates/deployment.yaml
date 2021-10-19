@@ -34,11 +34,11 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          - name: "LEMI011B_SERVER_TIMESCALEDB_URL"
-            value: "postgres://postgres:password@timescale.local:5432/lemi011b"
+            - name: "POSTGRES_PASSWORD"
+              value: "password"
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 5432
               protocol: TCP
           livenessProbe: null
 #            httpGet:
