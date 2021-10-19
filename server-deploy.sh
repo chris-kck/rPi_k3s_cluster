@@ -1,1 +1,1 @@
-helm install server server/.
+helm upgrade --install server server/.
